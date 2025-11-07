@@ -1,14 +1,14 @@
-package org.example.products.food.drinks;
+package org.example.products.food.sides;
 
-import org.example.products.food.Drink;
+import org.example.products.food.Side;
 
-public class Drink1 extends Drink {
+public class Side1 extends Side {
 
-    private final String name = "Dr.Pepper";
+    private final String name = "Bat wing";
     private final double price = 1;
     private final String description = "";
 
-    public Drink1(String size) {
+    public Side1(String size) {
         super.setName(name);
         super.setPrice(price);
         super.setDescription(description);

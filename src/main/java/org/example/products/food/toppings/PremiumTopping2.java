@@ -5,7 +5,7 @@ import org.example.products.food.Topping;
 public class PremiumTopping2 extends Topping {
 
     private final String name = "Premium topping 2";
-    private double price = 2;
+    private final double price = 2;
     private final boolean isPremium = true;
     private boolean isExtra = false;
 

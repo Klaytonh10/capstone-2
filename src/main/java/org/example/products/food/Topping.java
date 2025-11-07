@@ -9,20 +9,20 @@ public abstract class Topping implements Product {
     private boolean isPremium;
     private boolean isExtra;
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
     public void setPremium(boolean premium) {
         isPremium = premium;
     }
 
     public void setExtra(boolean extra) {
         isExtra = extra;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 
     @Override

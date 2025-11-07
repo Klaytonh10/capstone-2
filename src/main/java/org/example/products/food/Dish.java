@@ -9,7 +9,7 @@ public class Dish extends MenuItem {
     private ArrayList<Topping> toppings;
 
     public Dish() {
-
+        this.setDescription(getDescription());
     }
 
     public void addTopping(Topping topping) {
@@ -18,6 +18,10 @@ public class Dish extends MenuItem {
 
     public void removeTopping(Topping topping) {
         toppings.remove(topping);
+    }
+
+    public String getDescription() {
+        return "";
     }
 
 }

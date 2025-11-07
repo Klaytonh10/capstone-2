@@ -11,7 +11,7 @@ public class PremiumTopping1 extends Topping {
 
     public PremiumTopping1(boolean isExtra) {
         super.setName(name);
-        super.setPrice(super.getPrice());
+        super.setPrice(price);
         super.setPremium(isPremium);
         super.setExtra(isExtra);
     }

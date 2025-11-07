@@ -1,4 +1,4 @@
-package org.example.sellables;
+package org.example.products;
 
 public interface Product {
 

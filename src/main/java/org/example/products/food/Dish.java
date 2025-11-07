@@ -12,6 +12,10 @@ public class Dish extends MenuItem {
         this.setDescription(getDescription());
     }
 
+    public void setName(String name) {
+        this.setName(name);
+    }
+
     public void addTopping(Topping topping) {
         toppings.add(topping);
     }

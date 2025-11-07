@@ -1,9 +1,5 @@
 package org.example.products;
 
-import org.example.products.food.Topping;
-
-import java.util.ArrayList;
-
 public abstract class MenuItem implements Product {
 
     private String name;

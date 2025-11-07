@@ -4,7 +4,7 @@ import org.example.products.food.Side;
 
 public class Side1 extends Side {
 
-    private final String name = "Bat wing";
+    private final String name = "Onion rings";
     private final double price = 1;
     private final String description = "";
 

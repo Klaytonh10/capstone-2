@@ -9,7 +9,7 @@ public class Dish extends MenuItem {
     private ArrayList<Topping> toppings;
 
     public Dish() {
-        this.setDescription(getDescription());
+        this.toppings = new ArrayList<>();
     }
 
     public void setName(String name) {

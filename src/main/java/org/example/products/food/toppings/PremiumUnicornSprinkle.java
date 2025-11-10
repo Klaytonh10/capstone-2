@@ -2,15 +2,15 @@ package org.example.products.food.toppings;
 
 import org.example.products.food.Topping;
 
-public class PixieDust extends Topping {
+public class PremiumUnicornSprinkle extends Topping {
 
-    private final String name = "Pixie Dust";
-    private final String ability = "Slightly Glowing Skin";
-    private final double price = 1;
-    private final boolean isPremium = false;
+    private final String name = "Unicorn Sprinkles (Premium)";
+    private final String ability = "Temporary Flight";
+    private final double price = 4;
+    private final boolean isPremium = true;
     private boolean isExtra = false;
 
-    public PixieDust() {
+    public PremiumUnicornSprinkle(boolean isExtra) {
         super.setName(name);
         super.setAbility(ability);
         super.setPrice(price);

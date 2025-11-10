@@ -1,9 +1,8 @@
 package org.example;
 
 import org.example.products.MenuItem;
-import org.example.products.Product;
-import org.example.products.food.Dish;
-import org.example.products.food.Drink;
+import org.example.products.food.Potion;
+import org.example.products.food.Elixir;
 import org.example.products.food.Side;
 
 import java.util.ArrayList;
@@ -23,13 +22,14 @@ public class Order {
         return totalPrice;
     }
 
-    public void addDish(Dish dish) {
-        products.add(dish);
+    public void addPotion(Potion potion) {
+        products.add(potion);
         this.hasMain = true;
+        totalPrice += potion.getPrice();
     }
 
-    public void addDrink(Drink drink) {
-        products.add(drink);
+    public void addDrink(Elixir elixir) {
+        products.add(elixir);
     }
 
     public void addSide(Side side) {

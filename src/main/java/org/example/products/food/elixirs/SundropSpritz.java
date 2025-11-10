@@ -1,8 +1,8 @@
 package org.example.products.food.elixirs;
 
-import org.example.products.food.Drink;
+import org.example.products.food.Elixir;
 
-public class SundropSpritz extends Drink {
+public class SundropSpritz extends Elixir {
 
     private final String name = "Sundrop Spritz";
     private final double price = 1;

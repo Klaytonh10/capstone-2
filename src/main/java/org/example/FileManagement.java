@@ -1,16 +1,13 @@
 package org.example;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
-import de.vandermeer.asciitable.AsciiTable;
 import org.example.products.MenuItem;
-import org.example.products.Product;
-import org.example.products.food.Dish;
+import org.example.products.food.Potion;
 import org.example.products.food.Topping;
 
-import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -31,25 +28,32 @@ public class FileManagement {
         ObjectMapper objectMapper = new ObjectMapper();
 
         ObjectNode root = objectMapper.createObjectNode();
-        root.put("order", fileSignature);
+        root.put("order-id", fileSignature);
+
+        ArrayNode menuItemsArray = objectMapper.createArrayNode();
+
         ArrayList<MenuItem> items = order.getAllProducts();
         for(MenuItem item: items){
-            ObjectNode nextProduction = objectMapper.createObjectNode();
-            nextProduction.put("name", item.getName());
-            nextProduction.put("price", item.getPrice());
-            nextProduction.put("description", item.getDescription());
-            nextProduction.put("size", item.getSize());
-            if (item instanceof Dish) {
-                ObjectNode nextTopping = objectMapper.createObjectNode();
-                ArrayList<Topping> toppings = ((Dish) item).getToppings();
+            ObjectNode nextProduct = objectMapper.createObjectNode();
+            nextProduct.put("name", item.getName());
+            nextProduct.put("price", String.valueOf(item.getPrice()));
+            nextProduct.put("description", item.getDescription());
+            nextProduct.put("size", item.getSize());
+            if (item instanceof Potion potion) {
+                ArrayNode toppingsArray = objectMapper.createArrayNode();
+                ArrayList<Topping> toppings = potion.getToppings();
                 for (Topping topping : toppings) {
-                    nextTopping.put("topping-name",topping.getName());
-                    nextTopping.put("topping-price", topping.getPrice());
+                    ObjectNode toppingNode = objectMapper.createObjectNode();
+                    toppingNode.put("topping-name",topping.getName());
+                    toppingNode.put("topping-price", topping.getPrice());
+                    toppingsArray.add(toppingNode);
                 }
-                nextProduction.set("topping", nextTopping);
+                nextProduct.set("toppings", toppingsArray);
             }
-            root.set("menu-item", nextProduction);
+            menuItemsArray.add(nextProduct);
         }
+
+        root.set("menu-items", menuItemsArray);
 
         objectMapper.writerWithDefaultPrettyPrinter().writeValue(file, root);
 

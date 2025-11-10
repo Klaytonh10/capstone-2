@@ -5,6 +5,7 @@ import org.example.products.Product;
 public abstract class Topping implements Product {
 
     private String name;
+    private String ability;
     private double price;
     private boolean isPremium;
     private boolean isExtra;
@@ -22,16 +23,23 @@ public abstract class Topping implements Product {
     }
 
     public void setPrice(double price) {
-        this.price = price;
+        if(isExtra && isPremium) {
+            this.price = price * 2;
+        } else {
+            this.price = price;
+        }
+    }
+
+    public String getAbility() {
+        return ability;
+    }
+
+    public void setAbility(String ability) {
+        this.ability = ability;
     }
 
     @Override
     public double getPrice() {
-
-        if(isExtra && isPremium) {
-            price *= 2;
-        }
-
         return price;
     }
 

@@ -28,12 +28,14 @@ public class Order {
         totalPrice += potion.getPrice();
     }
 
-    public void addDrink(Elixir elixir) {
+    public void addElixir(Elixir elixir) {
         products.add(elixir);
+        totalPrice += elixir.getPrice();
     }
 
     public void addSide(Side side) {
         products.add(side);
+        totalPrice += side.getPrice();
     }
 
     public ArrayList<MenuItem> getAllProducts() {

@@ -5,14 +5,28 @@ import org.example.products.food.Elixir;
 public class SundropSpritz extends Elixir {
 
     private final String name = "Sundrop Spritz";
-    private final double price = 1;
     private final String description = "Tiny starbursts that pop on your tongue";
 
-    public SundropSpritz(String size) {
+    public SundropSpritz(String size, double price) {
         super.setName(name);
         super.setPrice(price);
         super.setDescription(description);
         super.setSize(size);
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public String getSize() {
+        return super.getSize();
+    }
+
+    public double getPrice() {
+        return super.getPrice();
+    }
 }

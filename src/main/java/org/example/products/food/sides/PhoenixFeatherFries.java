@@ -5,10 +5,10 @@ import org.example.products.food.Side;
 public class PhoenixFeatherFries extends Side {
 
     private final String name = "Phoenix Feather Fries";
-    private final double price = 1;
+    private double price;
     private final String description = "Always sizzling, never cooling down";
 
-    public PhoenixFeatherFries(String size) {
+    public PhoenixFeatherFries(String size, double price) {
         super.setName(name);
         super.setPrice(price);
         super.setDescription(description);

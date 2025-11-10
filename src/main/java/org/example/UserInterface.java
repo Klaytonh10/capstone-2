@@ -1,6 +1,12 @@
 package org.example;
 
+import org.example.products.food.Elixir;
 import org.example.products.food.Potion;
+import org.example.products.food.Side;
+import org.example.products.food.elixirs.SundropSpritz;
+import org.example.products.food.elixirs.ThunderMead;
+import org.example.products.food.sides.PhoenixFeatherFries;
+import org.example.products.food.sides.ToadstoolBites;
 import org.example.products.food.toppings.MoonflowerPetal;
 import org.example.products.food.toppings.PixieDust;
 import org.example.products.food.toppings.PremiumCelestialSeed;
@@ -18,21 +24,22 @@ public class UserInterface {
     static String abilityType;
 
     public static void start() {
-        order = new Order();
         boolean running = true;
 
-        while(running) {
+        while (running) {
+            order = new Order();
             System.out.println("""
-
-             ✨  ✨     ✨   ✨      ✨  ✨
-             ╔═════════════════════════════╗
-             ║      Magic Potion Shop      ║
-             ╚═════════════════════════════╝
-
-             1) New Order
-             0) Exit
-                  
-             """);
+                    
+                    ✨  ✨     ✨   ✨      ✨  ✨
+                    ╔═════════════════════════════╗
+                    ║      Magic Potion Shop      ║
+                    ╚═════════════════════════════╝
+                    ✨  ✨     ✨   ✨      ✨  ✨
+                    
+                    1) New Order
+                    0) Exit
+                    
+                    """);
 
             input = scanner.nextLine();
             switch (input) {
@@ -40,11 +47,11 @@ public class UserInterface {
                     orderScreen();
                     break;
                 case "0":
-                    System.out.println("\nShutting Down System");
+                    System.out.println("\nShutting Down System\n");
                     running = !running;
                     break;
                 default:
-                    System.out.println("Please enter a valid option");
+                    System.out.println("\nPlease select a valid option\n");
                     break;
             }
         }
@@ -52,7 +59,7 @@ public class UserInterface {
 
     private static void orderScreen() {
         boolean isOrdering = true;
-        while(isOrdering){
+        while (isOrdering) {
             System.out.println("""
                     
                     ╔══════════════════════════════╗
@@ -103,16 +110,16 @@ public class UserInterface {
         boolean hasSeed = false;
         boolean hasSprinkles = false;
 
-        while(size == null){
+        while (size == null) {
             System.out.println("""
                     
                     Size?
                     
                        Name      Price    Ability Amount
-                            
-                    1) Large:   10 Gold     3 Ability
-                    2) Medium:  7 Gold      2 Ability
-                    3) Small:   5 Gold      1 Ability
+                    
+                    1) Large:   10 Gold     6 Ability
+                    2) Medium:  7 Gold      5 Ability
+                    3) Small:   5 Gold      4 Ability
                     
                     """);
             input = scanner.nextLine();
@@ -129,12 +136,12 @@ public class UserInterface {
                     abilityAmount += 2;
                     break;
                 case "3":
-                    size = "small";
+                    size = "Small";
                     price += 5;
                     abilityAmount += 1;
                     break;
                 default:
-                    System.out.println("Please select (1), (2), or (3)");
+                    System.out.println("\nPlease select a valid option\n");
                     break;
             }
         }
@@ -143,7 +150,7 @@ public class UserInterface {
         potion.setPrice(price);
         potion.setAbilityAmount(abilityAmount);
 
-        while(abilityType == null) {
+        while (abilityType == null) {
             System.out.println("""
                     
                     Type?
@@ -166,7 +173,7 @@ public class UserInterface {
                     abilityType = "Stamina";
                     break;
                 default:
-                    System.out.println("Please select (1), (2), or (3)");
+                    System.out.println("\nPlease select a valid option\n");
                     break;
             }
         }
@@ -179,10 +186,10 @@ public class UserInterface {
                     
                             Name                    Price       Gained Ability
                     
-                    1) Moon-flower Petals          2 Gold   Temporary Night Vision
-                    2) Pixie Dust                  1 Gold   Slightly Glowing Skin
-                    3) Celestial Seeds (Premium)   5 Gold   Temporary Invisibility
-                    4) Unicorn Sprinkles (Premium) 4 Gold   Temporary Flight
+                    1) Moon-flower Petals          +2 Gold   Temporary Night Vision
+                    2) Pixie Dust                  +1 Gold   Slightly Glowing Skin
+                    3) Celestial Seeds (Premium)   +5 Gold   Temporary Invisibility
+                    4) Unicorn Sprinkles (Premium) +4 Gold   Temporary Flight
                     
                     0) Done
                     
@@ -208,20 +215,148 @@ public class UserInterface {
                     isAddingToppings = !isAddingToppings;
                     break;
                 default:
-                    System.out.println("Please select (1), (2), or (3)");
+                    System.out.println("\nPlease select a valid option\n");
                     break;
             }
         }
         order.addPotion(potion);
-        System.out.println(potion.getDescription() + "\n");
+        System.out.println("\n" + potion.getDescription() + "\n");
     }
 
     private static void addElixirMenu() {
+        Elixir elixir = null;
 
+        size = null;
+        double price = 0;
+        String flavor = null;
+
+        while (size == null) {
+            System.out.println("""
+                    
+                    ╔═════════════════════════════╗
+                    ║        Add An Elixir        ║
+                    ╚═════════════════════════════╝
+                    
+                    1) Large:   5 Gold
+                    2) Medium:  3 Gold
+                    3) Small:   1 Gold
+                    
+                    """);
+            String input = scanner.nextLine();
+            switch (input) {
+                case "1":
+                    size = "Large";
+                    price = 5;
+                    break;
+                case "2":
+                    size = "Medium";
+                    price = 3;
+                    break;
+                case "3":
+                    size = "Small";
+                    price = 1;
+                    break;
+                default:
+                    System.out.println("\nPlease select a valid option\n");
+                    break;
+            }
+        }
+
+        while (flavor == null) {
+            System.out.println("""
+                    
+                    ╔═════════════════════════════╗
+                    ║       Choose A Flavor       ║
+                    ╚═════════════════════════════╝
+                    
+                    1) Sundrop Spritz   Tiny starbursts that pop on your tongue
+                    2) Thunder Mead     Honey-based soda that rumbles faintly in your chest after each sip
+                    
+                    """);
+            input = scanner.nextLine();
+            switch (input) {
+                case "1":
+                    flavor = input;
+                    elixir = new SundropSpritz(size, price);
+                    break;
+                case "2":
+                    flavor = input;
+                    elixir = new ThunderMead(size, price);
+                    break;
+                default:
+                    System.out.println("\nPlease select a valid option\n");
+            }
+        }
+        order.addElixir(elixir);
+        System.out.println("\n" + elixir.getSize() + " " + elixir.getName() + " added for $" + elixir.getPrice() + "\n");
     }
 
     private static void addSideMenu() {
+        Side side = null;
+        size = null;
+        double price = 0;
+        String sideType = null;
 
+        while(size == null){
+            System.out.println("""
+                    
+                    ╔══════════════════════════════╗
+                    ║          Add A Side          ║
+                    ╚══════════════════════════════╝
+                    
+                    1) Large:   6 Gold
+                    2) Medium:  4 Gold
+                    3) Small:   2 Gold
+                    
+                    """);
+            input = scanner.nextLine();
+            switch (input) {
+                case "1":
+                    size = "Large";
+                    price = 6;
+                    break;
+                case "2":
+                    size = "Medium";
+                    price = 4;
+                    break;
+                case "3":
+                    size = "Small";
+                    price = 2;
+                    break;
+                default:
+                    System.out.println("\nPlease select a valid option\n");
+                    break;
+            }
+        }
+
+        while (sideType == null) {
+            System.out.println("""
+                    
+                    ╔══════════════════════════════╗
+                    ║          Add A Side          ║
+                    ╚══════════════════════════════╝
+                    
+                    1) Phoenix Feather Fries    Always sizzling, never cooling down
+                    2) Toadstool Bites          Mini mushrooms that giggle when you eat them
+                    
+                    """);
+            input = scanner.nextLine();
+            switch (input) {
+                case "1":
+                    sideType = input;
+                    side = new PhoenixFeatherFries(size, price);
+                    break;
+                case "2":
+                    sideType = input;
+                    side = new ToadstoolBites(size, price);
+                    break;
+                default:
+                    System.out.println("\nPlease select a valid option\n");
+                    break;
+            }
+        }
+        order.addSide(side);
+        System.out.println("\n" + side.getSize() + " " + side.getName() + " added for $" + side.getPrice() + "\n");
     }
 
     private static void checkoutMenu() {

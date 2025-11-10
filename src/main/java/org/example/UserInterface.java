@@ -111,9 +111,6 @@ public class UserInterface {
 
         Potion potion = new Potion();
 
-        double price = 0;
-        int abilityAmount = 0;
-
         size = null;
         abilityType = null;
 
@@ -138,29 +135,28 @@ public class UserInterface {
 
             switch (input) {
                 case "1":
-                    size = "Large";
-                    price += 10;
-                    abilityAmount += 3;
+                    size = input;
+                    potion.setSize("Large");
+                    potion.setPrice(10);
+                    potion.setAbilityAmount(6);
                     break;
                 case "2":
-                    size = "Medium";
-                    price += 7;
-                    abilityAmount += 2;
+                    size = input;
+                    potion.setSize("Medium");
+                    potion.setPrice(7);
+                    potion.setAbilityAmount(5);
                     break;
                 case "3":
-                    size = "Small";
-                    price += 5;
-                    abilityAmount += 1;
+                    size = input;
+                    potion.setSize("Small");
+                    potion.setPrice(5);
+                    potion.setAbilityAmount(4);
                     break;
                 default:
                     System.out.println("\nPlease select a valid option\n");
                     break;
             }
         }
-
-        potion.setSize(size);
-        potion.setPrice(price);
-        potion.setAbilityAmount(abilityAmount);
 
         while (abilityType == null) {
             System.out.println("""
@@ -176,20 +172,22 @@ public class UserInterface {
 
             switch (input) {
                 case "1":
-                    abilityType = "Health";
+                    abilityType = input;
+                    potion.setAbilityType("Health");
                     break;
                 case "2":
-                    abilityType = "Strength";
+                    abilityType = input;
+                    potion.setAbilityType("Strength");
                     break;
                 case "3":
-                    abilityType = "Stamina";
+                    abilityType = input;
+                    potion.setAbilityType("Stamina");
                     break;
                 default:
                     System.out.println("\nPlease select a valid option\n");
                     break;
             }
         }
-        potion.setAbilityType(abilityType);
 
         while (isAddingToppings) {
             System.out.println("""
@@ -211,16 +209,20 @@ public class UserInterface {
             switch (input) {
                 case "1":
                     potion.addTopping(new MoonflowerPetal());
+                    System.out.println("Moon-Flower Petal Added");
                     break;
                 case "2":
                     potion.addTopping(new PixieDust());
+                    System.out.println("Pixie Dust Added");
                     break;
                 case "3":
                     potion.addTopping(new PremiumCelestialSeed(hasSeed));
+                    System.out.println("Celestial Seeds Added");
                     hasSeed = true;
                     break;
                 case "4":
                     potion.addTopping(new PremiumUnicornSprinkle(hasSprinkles));
+                    System.out.println("Unicord Sprinkles Added");
                     hasSprinkles = true;
                     break;
                 case "0":
@@ -406,9 +408,15 @@ public class UserInterface {
                         }
                         break;
                     case "2":
+                        System.out.println("\nCanceling order...");
+                        try {
+                            Thread.sleep(2000);
+                        } catch (Exception e) {
+                            System.out.println("Thread Error " + e);
+                        }
+                        System.out.println("\nThis order was canceled\n");
                         isSaving = false;
                         isOrdering = false;
-                        break;
                     default:
                         System.out.println("\nPlease select a valid option\n");
                 }

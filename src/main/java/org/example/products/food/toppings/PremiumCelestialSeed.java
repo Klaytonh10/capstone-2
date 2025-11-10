@@ -13,9 +13,9 @@ public class PremiumCelestialSeed extends Topping {
     public PremiumCelestialSeed(boolean isExtra) {
         super.setName(name);
         super.setAbility(ability);
-        super.setPrice(price);
         super.setPremium(isPremium);
         super.setExtra(isExtra);
+        super.setPrice(getPrice());
     }
 
     public String getName() {
@@ -23,6 +23,10 @@ public class PremiumCelestialSeed extends Topping {
     }
 
     public double getPrice() {
-        return this.price;
+        if (isExtra) {
+            return this.price * 2;
+        } else {
+            return this.price;
+        }
     }
 }

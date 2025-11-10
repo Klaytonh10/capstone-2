@@ -23,11 +23,7 @@ public abstract class Topping implements Product {
     }
 
     public void setPrice(double price) {
-        if(isExtra && isPremium) {
-            this.price = price * 2;
-        } else {
-            this.price = price;
-        }
+        this.price = price;
     }
 
     public String getAbility() {

@@ -8,12 +8,18 @@ public class Dish extends MenuItem {
 
     private ArrayList<Topping> toppings;
 
-    public Dish() {
+    private String name = "Dish";
+
+    public Dish(String size) {
+        super.setName(name);
+        super.setSize(size);
+        super.setPrice(getPrice());
+        super.setDescription(getDescription());
         this.toppings = new ArrayList<>();
     }
 
     public void setName(String name) {
-        this.setName(name);
+        super.setName(name);
     }
 
     public void addTopping(Topping topping) {
@@ -26,6 +32,10 @@ public class Dish extends MenuItem {
 
     public String getDescription() {
         return "";
+    }
+
+    public double getPrice() {
+        return 0;
     }
 
     public ArrayList<Topping> getToppings() {

@@ -2,14 +2,14 @@ package org.example.products.food.toppings;
 
 import org.example.products.food.Topping;
 
-public class PremiumTopping2 extends Topping {
+public class PixieDust extends Topping {
 
-    private final String name = "Premium topping 2";
-    private final double price = 2;
-    private final boolean isPremium = true;
+    private final String name = "Topping 1";
+    private final double price = .60;
+    private final boolean isPremium = false;
     private boolean isExtra = false;
 
-    public PremiumTopping2(boolean isExtra) {
+    public PixieDust(boolean isExtra) {
         super.setName(name);
         super.setPrice(super.getPrice());
         super.setPremium(isPremium);

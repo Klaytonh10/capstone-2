@@ -2,13 +2,13 @@ package org.example.products.food.sides;
 
 import org.example.products.food.Side;
 
-public class Side1 extends Side {
+public class PhoenixFeatherFries extends Side {
 
-    private final String name = "Onion rings";
+    private final String name = "Phoenix Feather Fries";
     private final double price = 1;
-    private final String description = "";
+    private final String description = "Always sizzling, never cooling down";
 
-    public Side1(String size) {
+    public PhoenixFeatherFries(String size) {
         super.setName(name);
         super.setPrice(price);
         super.setDescription(description);

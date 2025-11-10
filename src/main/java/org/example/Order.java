@@ -18,6 +18,10 @@ public class Order {
         products = new ArrayList<>();
     }
 
+    public boolean getHasMain() {
+        return hasMain;
+    }
+
     public double getTotalPrice() {
         return totalPrice;
     }

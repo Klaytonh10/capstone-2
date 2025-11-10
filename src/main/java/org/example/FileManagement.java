@@ -57,8 +57,6 @@ public class FileManagement {
 
         objectMapper.writerWithDefaultPrettyPrinter().writeValue(file, root);
 
-        // Write data here
-
 
         // Display receipt
         //AsciiTable at = new AsciiTable();

@@ -1,5 +1,6 @@
 package org.example;
 
+import org.example.products.MenuItem;
 import org.example.products.food.Elixir;
 import org.example.products.food.Potion;
 import org.example.products.food.Side;
@@ -12,6 +13,9 @@ import org.example.products.food.toppings.PixieDust;
 import org.example.products.food.toppings.PremiumCelestialSeed;
 import org.example.products.food.toppings.PremiumUnicornSprinkle;
 
+import java.io.EOFException;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class UserInterface {
@@ -22,6 +26,8 @@ public class UserInterface {
 
     static String size;
     static String abilityType;
+
+    static boolean isOrdering = true;
 
     public static void start() {
         boolean running = true;
@@ -58,7 +64,6 @@ public class UserInterface {
     }
 
     private static void orderScreen() {
-        boolean isOrdering = true;
         while (isOrdering) {
             System.out.println("""
                     
@@ -89,6 +94,13 @@ public class UserInterface {
                     checkoutMenu();
                     break;
                 case "0":
+                    System.out.println("\nCanceling order...");
+                    try {
+                        Thread.sleep(2000);
+                    } catch (Exception e) {
+                        System.out.println("Thread Error " + e);
+                    }
+                    System.out.println("\nThis order was canceled\n");
                     isOrdering = false;
                     break;
             }
@@ -186,10 +198,10 @@ public class UserInterface {
                     
                             Name                    Price       Gained Ability
                     
-                    1) Moon-flower Petals          +2 Gold   Temporary Night Vision
-                    2) Pixie Dust                  +1 Gold   Slightly Glowing Skin
-                    3) Celestial Seeds (Premium)   +5 Gold   Temporary Invisibility
-                    4) Unicorn Sprinkles (Premium) +4 Gold   Temporary Flight
+                    1) Moon-flower Petals          2 Gold   Temporary Night Vision
+                    2) Pixie Dust                  1 Gold   Slightly Glowing Skin
+                    3) Celestial Seeds (Premium)   5 Gold   Temporary Invisibility
+                    4) Unicorn Sprinkles (Premium) 4 Gold   Temporary Flight
                     
                     0) Done
                     
@@ -297,7 +309,7 @@ public class UserInterface {
         double price = 0;
         String sideType = null;
 
-        while(size == null){
+        while (size == null) {
             System.out.println("""
                     
                     ╔══════════════════════════════╗
@@ -360,7 +372,48 @@ public class UserInterface {
     }
 
     private static void checkoutMenu() {
+        ArrayList<MenuItem> items = order.getAllProducts();
+        boolean isSaving = true;
 
+        if (items.isEmpty()) {
+            System.out.println("Please add an item to the order");
+        } else {
+            for (MenuItem item : items) {
+                if (item instanceof Potion potion) {
+                    System.out.println(potion.getDescription());
+                    continue;
+                }
+                System.out.println(item.getName() + " for " + item.getPrice());
+            }
+
+            while (isSaving) {
+                System.out.println("""
+                        
+                        
+                        1) Confirm Order
+                        2) Cancel Order (return to home screen)
+                        
+                        """);
+                input = scanner.nextLine();
+                switch (input) {
+                    case "1":
+                        try {
+                            FileManagement.saveReceipt(order);
+                            isSaving = false;
+                            isOrdering = false;
+                        } catch (IOException e) {
+                            System.out.println("Save file failed " + e);
+                        }
+                        break;
+                    case "2":
+                        isSaving = false;
+                        isOrdering = false;
+                        break;
+                    default:
+                        System.out.println("\nPlease select a valid option\n");
+                }
+            }
+        }
     }
 
 }

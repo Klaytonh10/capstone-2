@@ -1,12 +1,23 @@
 package org.example;
 
+import org.example.products.*;
+
 public class UserInterface {
 
-    public static void start() {
-        try {
-            FileManagement.saveReceipt(new Order());
-        } catch (Exception e) {
+    Order order;
 
+    public static void start() {
+        while(true) {
+            System.out.println("""
+                              
+             ✨🪄✨       ✨🪄✨        ✨🪄✨
+             ╔═════════════════════════════╗
+             ║      Magic Potion Shop      ║
+             ╚═════════════════════════════╝
+
+            
+                              
+                    """);
         }
     }
 

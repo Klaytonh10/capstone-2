@@ -28,4 +28,7 @@ public class Dish extends MenuItem {
         return "";
     }
 
+    public ArrayList<Topping> getToppings() {
+        return toppings;
+    }
 }

@@ -8,7 +8,7 @@ import org.example.products.food.Side;
 
 import java.util.ArrayList;
 
-public class Order extends MenuItem {
+public class Order {
 
     private ArrayList<MenuItem> products;
 
@@ -36,8 +36,8 @@ public class Order extends MenuItem {
         products.add(side);
     }
 
-    public ArrayList<Product> getAllProducts() {
-        return null;
+    public ArrayList<MenuItem> getAllProducts() {
+        return products;
     }
 
 }

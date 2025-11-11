@@ -6,11 +6,11 @@ public class PremiumUnicornSprinkle extends Topping {
 
     private final String name = "Unicorn Sprinkles (Premium)";
     private final String ability = "Temporary Flight";
-    private final double price = 4;
+    private double price = 4;
     private final boolean isPremium = true;
     private boolean isExtra = false;
 
-    public PremiumUnicornSprinkle(boolean isExtra) {
+    public PremiumUnicornSprinkle() {
         super.setName(name);
         super.setAbility(ability);
         super.setPremium(isPremium);

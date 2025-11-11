@@ -4,6 +4,7 @@ import org.example.products.MenuItem;
 import org.example.products.food.Elixir;
 import org.example.products.food.Potion;
 import org.example.products.food.Side;
+import org.example.products.food.Topping;
 import org.example.products.food.elixirs.SundropSpritz;
 import org.example.products.food.elixirs.ThunderMead;
 import org.example.products.food.sides.PhoenixFeatherFries;
@@ -13,7 +14,6 @@ import org.example.products.food.toppings.PixieDust;
 import org.example.products.food.toppings.PremiumCelestialSeed;
 import org.example.products.food.toppings.PremiumUnicornSprinkle;
 
-import java.io.EOFException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -206,6 +206,8 @@ public class UserInterface {
                     """);
             input = scanner.nextLine();
 
+            ArrayList<Topping> toppings = potion.getToppings();
+
             switch (input) {
                 case "1":
                     potion.addTopping(new MoonflowerPetal());
@@ -216,14 +218,10 @@ public class UserInterface {
                     System.out.println("Pixie Dust Added");
                     break;
                 case "3":
-                    potion.addTopping(new PremiumCelestialSeed(hasSeed));
-                    System.out.println("Celestial Seeds Added");
-                    hasSeed = true;
+                    potion.addTopping(new PremiumCelestialSeed());
                     break;
                 case "4":
-                    potion.addTopping(new PremiumUnicornSprinkle(hasSprinkles));
-                    System.out.println("Unicord Sprinkles Added");
-                    hasSprinkles = true;
+                    potion.addTopping(new PremiumUnicornSprinkle());
                     break;
                 case "0":
                     isAddingToppings = !isAddingToppings;

@@ -6,11 +6,11 @@ public class PremiumCelestialSeed extends Topping {
 
     private final String name = "Celestial Seeds (Premium)";
     private final String ability = "Temporary Invisibility";
-    private final double price = 5;
+    private double price = 5;
     private final boolean isPremium = true;
     private boolean isExtra = false;
 
-    public PremiumCelestialSeed(boolean isExtra) {
+    public PremiumCelestialSeed() {
         super.setName(name);
         super.setAbility(ability);
         super.setPremium(isPremium);

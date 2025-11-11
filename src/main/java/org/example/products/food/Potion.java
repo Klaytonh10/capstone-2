@@ -85,7 +85,7 @@ public class Potion extends MenuItem {
             }
         }
 
-        return "Added " + this.getSize() + " " + this.abilityType + " potion with \n" + petalNum + " Moonflower Petals\n" + dustNum + " Pixie Dust\n" + seedNum + " Celestial Seeds\n" + sprinkleNum + " Unicorn Sprinkles\n" + "For: $" + getPrice();
+        return "Added " + this.getSize() + " " + this.abilityType + " potion with, " + petalNum + " Moonflower Petals, " + dustNum + " Pixie Dust, " + seedNum + " Celestial Seeds, " + sprinkleNum + " Unicorn Sprinkles, " + "For: $" + getPrice();
     }
 
     public ArrayList<Topping> getToppings() {

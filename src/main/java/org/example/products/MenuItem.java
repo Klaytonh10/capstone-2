@@ -4,6 +4,7 @@ public abstract class MenuItem implements Product {
 
     private String name;
     private String description;
+    private String report;
     private String size;
     private double price;
 
@@ -30,6 +31,14 @@ public abstract class MenuItem implements Product {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public void setReport(String report) {
+        this.report = report;
+    }
+
+    public String getReport() {
+        return report;
     }
 
     @Override

@@ -13,6 +13,11 @@ public class PhoenixFeatherFries extends Side {
         super.setPrice(price);
         super.setDescription(description);
         super.setSize(size);
+        super.setReport(getReport());
+    }
+
+    public String getReport() {
+        return getSize() + " " + getName() + " for $" + getPrice();
     }
 
 }

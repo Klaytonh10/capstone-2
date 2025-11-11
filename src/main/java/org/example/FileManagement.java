@@ -3,6 +3,7 @@ package org.example;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import de.vandermeer.asciitable.AsciiTable;
 import org.example.products.MenuItem;
 import org.example.products.food.Potion;
 import org.example.products.food.Topping;
@@ -59,15 +60,23 @@ public class FileManagement {
 
 
         // Display receipt
-        //AsciiTable at = new AsciiTable();
-        //at.addRule(); // adds line
-        //at.addRow("Item", "Qty", "Price");
-        //at.addRule();
-        //at.addRow("Coffee", "1", "$3.00");
-        //at.addRule();
-        //at.addRow("Donut", "2", "$4.00");
-        //at.addRule();
-        //System.out.println(at.render());
+        AsciiTable at = new AsciiTable();
+        at.addRule(); // adds line
+        at.addRow("Item", "Size", "Price", "Description");
+        at.addRule();
+        for (MenuItem item : items) {
+            if(item instanceof Potion potion){
+                at.addRow(potion.getName(), potion.getSize(), String.valueOf(potion.getPrice()), potion.getDescription());
+            } else {
+                at.addRow(item.getName(), item.getSize(), String.valueOf(item.getPrice()), item.getReport());
+            }
+            at.addRule();
+        }
+        at.addRow("Total", "", "", "");
+        at.addHeavyRule();
+        at.addRow(String.valueOf(order.getTotalPrice()));
+        at.addRule();
+        System.out.println(at.render());
     }
 
 }

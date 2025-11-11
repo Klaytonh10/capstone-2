@@ -12,6 +12,7 @@ public class SundropSpritz extends Elixir {
         super.setPrice(price);
         super.setDescription(description);
         super.setSize(size);
+        super.setReport(getReport());
     }
 
     public String getName() {
@@ -28,5 +29,9 @@ public class SundropSpritz extends Elixir {
 
     public double getPrice() {
         return super.getPrice();
+    }
+
+    public String getReport() {
+        return getSize() + " " + getName() + " for $" + getPrice();
     }
 }

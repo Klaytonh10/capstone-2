@@ -415,8 +415,10 @@ public class UserInterface {
                         System.out.println("\nThis order was canceled\n");
                         isSaving = false;
                         isOrdering = false;
+                        break;
                     default:
                         System.out.println("\nPlease select a valid option\n");
+                        break;
                 }
             }
         }

@@ -12,6 +12,7 @@ public class ThunderMead extends Elixir {
         super.setPrice(price);
         super.setDescription(description);
         super.setSize(size);
+        super.setReport(getReport());
     }
 
     public String getName() {
@@ -24,6 +25,10 @@ public class ThunderMead extends Elixir {
 
     public String getSize() {
         return super.getSize();
+    }
+
+    public String getReport() {
+        return getSize() + " " + getName() + " for $" + getPrice();
     }
 
     public double getPrice() {

@@ -72,9 +72,7 @@ public class FileManagement {
             }
             at.addRule();
         }
-        at.addRow("Total", "", "", "");
-        at.addHeavyRule();
-        at.addRow(String.valueOf(order.getTotalPrice()));
+        at.addRow("Total", " ", " ", order.getTotalPrice());
         at.addRule();
         System.out.println(at.render());
     }

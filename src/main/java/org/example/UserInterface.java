@@ -241,6 +241,7 @@ public class UserInterface {
                     break;
                 case "9":
                     handleRemoveTopping(potion);
+                    break;
                 case "0":
                     isAddingToppings = !isAddingToppings;
                     break;
@@ -262,16 +263,34 @@ public class UserInterface {
         // Gives key-value pairs to access specific options easier
         HashMap<Integer, Topping> removableToppings = new HashMap<>();
 
+        // For each topping, give a key value of index, and value of that topping object
         int index = 0;
         for (Topping topping : toppings) {
             index++;
             System.out.println(index + ") " + topping.getName() + " " + topping.getPrice());
             removableToppings.put(index, topping);
         }
-        System.out.println("Select a topping to remove by it's number");
-        input = scanner.nextLine();
-        Topping selectedTopping = removableToppings.get(input);
 
+        System.out.println("\nSelect a topping to remove by it's number (or x to cancel)");
+        input = scanner.nextLine();
+        Topping selectedTopping = removableToppings.get(Integer.parseInt(input));
+
+        if(input.equalsIgnoreCase("x")){
+            System.out.println("Remove topping canceled");
+        }else {
+            if (removableToppings.containsValue(selectedTopping)) {
+                System.out.println("Are you sure you want to remove " + selectedTopping.getName() + " " + selectedTopping.getPrice() + "? (y/n)");
+                input = scanner.nextLine();
+                if (input.equalsIgnoreCase("y")) {
+                    potion.removeTopping(selectedTopping);
+                    System.out.println(selectedTopping.getName() + " removed\n");
+                } else {
+                    System.out.println("Failed to remove topping...");
+                }
+            } else {
+                System.out.println("Failed to remove topping...");
+            }
+        }
     }
 
     private static void addElixirMenu() {

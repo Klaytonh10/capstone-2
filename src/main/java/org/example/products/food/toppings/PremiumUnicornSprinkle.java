@@ -10,7 +10,7 @@ public class PremiumUnicornSprinkle extends Topping {
     private final boolean isPremium = true;
     private boolean isExtra = false;
 
-    public PremiumUnicornSprinkle() {
+    public PremiumUnicornSprinkle(boolean isExtra) {
         super.setName(name);
         super.setAbility(ability);
         super.setPremium(isPremium);

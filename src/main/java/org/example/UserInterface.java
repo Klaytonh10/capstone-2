@@ -114,11 +114,6 @@ public class UserInterface {
         size = null;
         abilityType = null;
 
-        boolean isAddingToppings = true;
-
-        boolean hasSeed = false;
-        boolean hasSprinkles = false;
-
         while (size == null) {
             System.out.println("""
                     
@@ -189,6 +184,11 @@ public class UserInterface {
             }
         }
 
+        boolean isAddingToppings = true;
+
+        boolean hasSeed = false;
+        boolean hasSprinkles = false;
+
         while (isAddingToppings) {
             System.out.println("""
                     
@@ -206,8 +206,6 @@ public class UserInterface {
                     """);
             input = scanner.nextLine();
 
-            ArrayList<Topping> toppings = potion.getToppings();
-
             switch (input) {
                 case "1":
                     potion.addTopping(new MoonflowerPetal());
@@ -218,10 +216,18 @@ public class UserInterface {
                     System.out.println("Pixie Dust Added");
                     break;
                 case "3":
-                    potion.addTopping(new PremiumCelestialSeed());
+                    if (hasSeed) {
+                        potion.addTopping(new PremiumCelestialSeed(true));
+                    } else {
+                        potion.addTopping(new PremiumCelestialSeed(false));
+                    }
                     break;
                 case "4":
-                    potion.addTopping(new PremiumUnicornSprinkle());
+                    if (hasSprinkles) {
+                        potion.addTopping(new PremiumUnicornSprinkle(true));
+                    } else {
+                        potion.addTopping(new PremiumUnicornSprinkle(false));
+                    }
                     break;
                 case "0":
                     isAddingToppings = !isAddingToppings;

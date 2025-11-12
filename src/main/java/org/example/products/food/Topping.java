@@ -10,12 +10,12 @@ public abstract class Topping implements Product {
     private boolean isPremium;
     private boolean isExtra;
 
-    public void setPremium(boolean premium) {
-        isPremium = premium;
+    public void setExtra(boolean extra) {
+        this.isExtra = extra;
     }
 
-    public void setExtra(boolean extra) {
-        isExtra = extra;
+    public void setPremium(boolean premium) {
+        isPremium = premium;
     }
 
     public void setName(String name) {
@@ -36,7 +36,11 @@ public abstract class Topping implements Product {
 
     @Override
     public double getPrice() {
-        return price;
+        if(this.isExtra && this.isPremium) {
+            return this.price * 2;
+        } else {
+            return this.price;
+        }
     }
 
     @Override

@@ -8,10 +8,9 @@ public class Potion extends MenuItem {
 
     private ArrayList<Topping> toppings = new ArrayList<>();
 
-    private String name = "Potion";
+    private final String name = "Potion";
     private String abilityType;
     private int abilityAmount;
-    private double price = 0;
 
     public Potion() {
         super.setName(name);
@@ -38,23 +37,27 @@ public class Potion extends MenuItem {
     }
 
     public void addCost(double cost) {
-        this.price += cost;
-        super.setPrice(this.price);
+        double newPrice = super.getPrice() + cost;
+        super.setPrice(newPrice);
     }
 
-    public void subtractCost(double cost) {
-        this.price -= cost;
-        super.setPrice(this.price);
-    }
+    //public void subtractCost(double cost) {
+    //    getPrice()
+    //    super.setPrice(this.price);
+    //}
 
     public void addTopping(Topping topping) {
         toppings.add(topping);
         addCost(topping.getPrice());
     }
 
-    public void removeTopping(Topping topping) {
-        toppings.remove(topping);
-        subtractCost(topping.getPrice());
+    //public void removeTopping(Topping topping) {
+    //    toppings.remove(topping);
+    //    subtractCost(topping.getPrice());
+    //}
+
+    public void setPrice(double price) {
+        super.setPrice(price);
     }
 
     public double getPrice() {
@@ -85,7 +88,7 @@ public class Potion extends MenuItem {
             }
         }
 
-        return "Added " + this.getSize() + " " + this.abilityType + " potion with, " + petalNum + " Moonflower Petals, " + dustNum + " Pixie Dust, " + seedNum + " Celestial Seeds, " + sprinkleNum + " Unicorn Sprinkles, " + "For: $" + getPrice() + "\nAbility power: " + getAbilityAmount();
+        return "Added " + this.getSize() + " " + this.getAbilityAmount() + " potion with, " + petalNum + " Moonflower Petals, " + dustNum + " Pixie Dust, " + seedNum + " Celestial Seeds, " + sprinkleNum + " Unicorn Sprinkles, " + "For: $" + this.getPrice() + "\nAbility power: " + this.getAbilityAmount();
     }
 
     public ArrayList<Topping> getToppings() {

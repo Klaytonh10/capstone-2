@@ -14,7 +14,6 @@ public class PixieDust extends Topping {
         super.setName(name);
         super.setAbility(ability);
         super.setPrice(price);
-        super.setPremium(isPremium);
         super.setExtra(isExtra);
     }
 

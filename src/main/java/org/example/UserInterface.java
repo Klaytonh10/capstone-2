@@ -96,7 +96,7 @@ public class UserInterface {
                 case "0":
                     System.out.println("\nCanceling order...");
                     try {
-                        Thread.sleep(2000);
+                        Thread.sleep(1500);
                     } catch (Exception e) {
                         System.out.println("Thread Error " + e);
                     }
@@ -218,15 +218,21 @@ public class UserInterface {
                 case "3":
                     if (hasSeed) {
                         potion.addTopping(new PremiumCelestialSeed(true));
+                        System.out.println("Extra Celestial Seed Added");
                     } else {
                         potion.addTopping(new PremiumCelestialSeed(false));
+                        System.out.println("Celestial Seed Added");
+                        hasSeed = true;
                     }
                     break;
                 case "4":
                     if (hasSprinkles) {
                         potion.addTopping(new PremiumUnicornSprinkle(true));
+                        System.out.println("Extra Unicorn Sprinkles Added");
                     } else {
                         potion.addTopping(new PremiumUnicornSprinkle(false));
+                        System.out.println("Unicorn Sprinkles Added");
+                        hasSprinkles = true;
                     }
                     break;
                 case "0":

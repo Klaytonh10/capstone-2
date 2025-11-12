@@ -5,21 +5,18 @@ import org.example.products.food.Elixir;
 import org.example.products.food.Potion;
 import org.example.products.food.Side;
 import org.example.products.food.Topping;
+import org.example.products.food.elixirs.GarlicJuice;
 import org.example.products.food.elixirs.SundropSpritz;
 import org.example.products.food.elixirs.ThunderMead;
+import org.example.products.food.sides.DragonScaleChips;
 import org.example.products.food.sides.PhoenixFeatherFries;
 import org.example.products.food.sides.ToadstoolBites;
-import org.example.products.food.toppings.MoonflowerPetal;
-import org.example.products.food.toppings.PixieDust;
-import org.example.products.food.toppings.PremiumCelestialSeed;
-import org.example.products.food.toppings.PremiumUnicornSprinkle;
+import org.example.products.food.toppings.*;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Scanner;
-import java.util.stream.Collectors;
 
 public class UserInterface {
 
@@ -32,6 +29,7 @@ public class UserInterface {
 
     static boolean isOrdering = true;
 
+    // The base program loop. If this loop ends, so does the program.
     public static void start() {
         boolean running = true;
 
@@ -201,8 +199,9 @@ public class UserInterface {
                     
                     1) Moon-flower Petals          2 Gold   Temporary Night Vision
                     2) Pixie Dust                  1 Gold   Slightly Glowing Skin
-                    3) Celestial Seeds (Premium)   5 Gold   Temporary Invisibility
-                    4) Unicorn Sprinkles (Premium) 4 Gold   Temporary Flight
+                    3) Ethereal Honey              3 Gold   25% chance that your next wish comes true
+                    4) Celestial Seeds (Premium)   5 Gold   Temporary Invisibility
+                    5) Unicorn Sprinkles (Premium) 4 Gold   Temporary Flight
                     
                     9) Remove A Topping
                     0) Done
@@ -220,6 +219,9 @@ public class UserInterface {
                     System.out.println("Pixie Dust Added");
                     break;
                 case "3":
+                    potion.addTopping(new EtherealHoney());
+                    System.out.println("Ethereal Honey Added");
+                case "4":
                     if (hasSeed) {
                         potion.addTopping(new PremiumCelestialSeed(true));
                         System.out.println("Extra Celestial Seed Added");
@@ -229,7 +231,7 @@ public class UserInterface {
                         hasSeed = true;
                     }
                     break;
-                case "4":
+                case "5":
                     if (hasSprinkles) {
                         potion.addTopping(new PremiumUnicornSprinkle(true));
                         System.out.println("Extra Unicorn Sprinkles Added");
@@ -275,21 +277,17 @@ public class UserInterface {
         input = scanner.nextLine();
         Topping selectedTopping = removableToppings.get(Integer.parseInt(input));
 
-        if(input.equalsIgnoreCase("x")){
-            System.out.println("Remove topping canceled");
-        }else {
-            if (removableToppings.containsValue(selectedTopping)) {
-                System.out.println("Are you sure you want to remove " + selectedTopping.getName() + " " + selectedTopping.getPrice() + "? (y/n)");
-                input = scanner.nextLine();
-                if (input.equalsIgnoreCase("y")) {
-                    potion.removeTopping(selectedTopping);
-                    System.out.println(selectedTopping.getName() + " removed\n");
-                } else {
-                    System.out.println("Failed to remove topping...");
-                }
+        if(removableToppings.containsValue(selectedTopping)) {
+            System.out.println("Are you sure you want to remove " + selectedTopping.getName() + " " + selectedTopping.getPrice() + "? (y/n)");
+            input = scanner.nextLine();
+            if (input.equalsIgnoreCase("y")) {
+                potion.removeTopping(selectedTopping);
+                System.out.println(selectedTopping.getName() + " removed\n");
             } else {
                 System.out.println("Failed to remove topping...");
             }
+        } else {
+            System.out.println("Failed to remove topping...");
         }
     }
 
@@ -341,6 +339,7 @@ public class UserInterface {
                     
                     1) Sundrop Spritz   Tiny starbursts that pop on your tongue
                     2) Thunder Mead     Honey-based soda that rumbles faintly in your chest after each sip
+                    3) Garlic Water     It's Water with garlic in it
                     
                     """);
             input = scanner.nextLine();
@@ -353,6 +352,9 @@ public class UserInterface {
                     flavor = input;
                     elixir = new ThunderMead(size, price);
                     break;
+                case "3":
+                    flavor = input;
+                    elixir = new GarlicJuice(size, price);
                 default:
                     System.out.println("\nPlease select a valid option\n");
             }
@@ -408,6 +410,7 @@ public class UserInterface {
                     
                     1) Phoenix Feather Fries    Always sizzling, never cooling down
                     2) Toadstool Bites          Mini mushrooms that giggle when you eat them
+                    3) Dragon Scale Chips       Thin, shimmering crisps that crackle faintly
                     
                     """);
             input = scanner.nextLine();
@@ -420,6 +423,9 @@ public class UserInterface {
                     sideType = input;
                     side = new ToadstoolBites(size, price);
                     break;
+                case "3":
+                    sideType = input;
+                    side = new DragonScaleChips(size, price);
                 default:
                     System.out.println("\nPlease select a valid option\n");
                     break;

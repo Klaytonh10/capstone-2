@@ -64,6 +64,7 @@ public class UserInterface {
         }
     }
 
+    // Loop for what to add to an order
     private static void orderScreen() {
         while (isOrdering) {
             System.out.println("""
@@ -108,6 +109,7 @@ public class UserInterface {
         }
     }
 
+    // Menu to add potion to order
     private static void addPotionMenu() {
 
         Potion potion = new Potion();
@@ -256,6 +258,7 @@ public class UserInterface {
         System.out.println("\n" + potion.getDescription() + "\n");
     }
 
+
     private static void handleRemoveTopping(Potion potion) {
         System.out.println();
 
@@ -291,6 +294,7 @@ public class UserInterface {
         }
     }
 
+    // Menu to add elixir to order
     private static void addElixirMenu() {
         Elixir elixir = null;
 
@@ -363,6 +367,7 @@ public class UserInterface {
         System.out.println("\n" + elixir.getSize() + " " + elixir.getName() + " added for $" + elixir.getPrice() + "\n");
     }
 
+    // Menu to add Side to order
     private static void addSideMenu() {
         Side side = null;
         size = null;
@@ -435,6 +440,7 @@ public class UserInterface {
         System.out.println("\n" + side.getSize() + " " + side.getName() + " added for $" + side.getPrice() + "\n");
     }
 
+    // Handle save to file
     private static void checkoutMenu() {
         ArrayList<MenuItem> items = order.getAllProducts();
         boolean isSaving = true;

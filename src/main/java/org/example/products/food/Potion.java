@@ -16,6 +16,10 @@ public class Potion extends MenuItem {
         super.setName(name);
     }
 
+    public String getName() {
+        return super.getName();
+    }
+
     public void setSize(String size) {
         super.setSize(size);
     }
@@ -41,20 +45,20 @@ public class Potion extends MenuItem {
         super.setPrice(newPrice);
     }
 
-    //public void subtractCost(double cost) {
-    //    getPrice()
-    //    super.setPrice(this.price);
-    //}
+    public void subtractCost(double cost) {
+        double newPrice = super.getPrice() - cost;
+        super.setPrice(newPrice);
+    }
 
     public void addTopping(Topping topping) {
         toppings.add(topping);
         addCost(topping.getPrice());
     }
 
-    //public void removeTopping(Topping topping) {
-    //    toppings.remove(topping);
-    //    subtractCost(topping.getPrice());
-    //}
+    public void removeTopping(Topping topping) {
+        toppings.remove(topping);
+        subtractCost(topping.getPrice());
+    }
 
     public void setPrice(double price) {
         super.setPrice(price);

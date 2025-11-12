@@ -16,7 +16,10 @@ import org.example.products.food.toppings.PremiumUnicornSprinkle;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class UserInterface {
 
@@ -201,6 +204,7 @@ public class UserInterface {
                     3) Celestial Seeds (Premium)   5 Gold   Temporary Invisibility
                     4) Unicorn Sprinkles (Premium) 4 Gold   Temporary Flight
                     
+                    9) Remove A Topping
                     0) Done
                     
                     """);
@@ -235,6 +239,8 @@ public class UserInterface {
                         hasSprinkles = true;
                     }
                     break;
+                case "9":
+                    handleRemoveTopping(potion);
                 case "0":
                     isAddingToppings = !isAddingToppings;
                     break;
@@ -245,6 +251,27 @@ public class UserInterface {
         }
         order.addPotion(potion);
         System.out.println("\n" + potion.getDescription() + "\n");
+    }
+
+    private static void handleRemoveTopping(Potion potion) {
+        System.out.println();
+
+        // Get all toppings from this potion so far
+        ArrayList<Topping> toppings = potion.getToppings();
+
+        // Gives key-value pairs to access specific options easier
+        HashMap<Integer, Topping> removableToppings = new HashMap<>();
+
+        int index = 0;
+        for (Topping topping : toppings) {
+            index++;
+            System.out.println(index + " " + topping.getName() + " " + topping.getPrice());
+            removableToppings.put(index, topping);
+        }
+        System.out.println("Select a topping to remove by it's number");
+        input = scanner.nextLine();
+        Topping selectedTopping = removableToppings.get(input);
+
     }
 
     private static void addElixirMenu() {

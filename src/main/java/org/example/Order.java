@@ -1,6 +1,7 @@
 package org.example;
 
 import org.example.products.MenuItem;
+import org.example.products.Product;
 import org.example.products.food.Potion;
 import org.example.products.food.Elixir;
 import org.example.products.food.Side;
@@ -40,6 +41,16 @@ public class Order {
     public void addSide(Side side) {
         products.add(side);
         totalPrice += side.getPrice();
+    }
+
+    public int getTotalAbilityPower() {
+        int allAbilityPower = 0;
+        for(Product product : products) {
+            if(product instanceof Potion potion) {
+                allAbilityPower += potion.getAbilityAmount();
+            }
+        }
+        return allAbilityPower;
     }
 
     public ArrayList<MenuItem> getAllProducts() {

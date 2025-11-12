@@ -19,20 +19,27 @@ public class FileManagement {
     private static String fileWriteLocation = "src/main/resources/";
 
     public static void saveReceipt(Order order) throws IOException {
+
+        // Get current DateTime to identify each individual receipt
         LocalDateTime fileDateName = LocalDateTime.now();
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyyMMdd-hhmmss");
         String fileSignature = fileDateName.format(dateTimeFormatter);
 
+        // Create new file with custom DateTime tag
         File file = new File(fileWriteLocation + fileSignature + ".json");
 
         // Create JSON structure
         ObjectMapper objectMapper = new ObjectMapper();
 
+        // Root JSON object to build on
         ObjectNode root = objectMapper.createObjectNode();
         root.put("order-id", fileSignature);
 
+        // New JSON array to add multiple objects to
         ArrayNode menuItemsArray = objectMapper.createArrayNode();
 
+        // For each item, get the name, price, description, and size
+        // If the item is a Potion(main dish), also get that topping name and price
         ArrayList<MenuItem> items = order.getAllProducts();
         for(MenuItem item: items){
             ObjectNode nextProduct = objectMapper.createObjectNode();
@@ -49,17 +56,21 @@ public class FileManagement {
                     toppingNode.put("topping-price", topping.getPrice());
                     toppingsArray.add(toppingNode);
                 }
+                // Add each topping to array of toppings
                 nextProduct.set("toppings", toppingsArray);
             }
+            // Add each item to order array
             menuItemsArray.add(nextProduct);
         }
 
+        // Add finished object to root object
         root.set("menu-items", menuItemsArray);
 
+        //write object to file
         objectMapper.writerWithDefaultPrettyPrinter().writeValue(file, root);
 
 
-        // Display receipt
+        // Display receipt in console
         AsciiTable at = new AsciiTable();
         at.addRule(); // adds line
         at.addRow("Item", "Size", "Price", "Description");
@@ -74,6 +85,7 @@ public class FileManagement {
         }
         at.addRow("Total", " ", " ", order.getTotalPrice());
         at.addRule();
+        at.addRow("Ability Power", " ", " ", order.getTotalAbilityPower());
         System.out.println(at.render());
     }
 

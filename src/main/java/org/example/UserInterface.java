@@ -265,7 +265,7 @@ public class UserInterface {
         int index = 0;
         for (Topping topping : toppings) {
             index++;
-            System.out.println(index + " " + topping.getName() + " " + topping.getPrice());
+            System.out.println(index + ") " + topping.getName() + " " + topping.getPrice());
             removableToppings.put(index, topping);
         }
         System.out.println("Select a topping to remove by it's number");

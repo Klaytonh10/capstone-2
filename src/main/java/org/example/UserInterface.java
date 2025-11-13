@@ -37,11 +37,11 @@ public class UserInterface {
             order = new Order();
             System.out.println("""
                     
-                    ✨  ✨     ✨   ✨      ✨  ✨
+                    ✨  ✨     ✨  ✨      ✨  ✨
                     ╔═════════════════════════════╗
-                    ║      Magic Potion Shop      ║
+                    ║       Oops! All Magic       ║
                     ╚═════════════════════════════╝
-                    ✨  ✨     ✨   ✨      ✨  ✨
+                    ✨  ✨     ✨  ✨      ✨  ✨
                     
                     1) New Order
                     0) Exit
@@ -120,7 +120,9 @@ public class UserInterface {
         while (size == null) {
             System.out.println("""
                     
-                    Size?
+                    ╔═════════════════════════════╗
+                    ║            Size?            ║
+                    ╚═════════════════════════════╝
                     
                        Name      Price    Ability Amount
                     
@@ -159,7 +161,9 @@ public class UserInterface {
         while (abilityType == null) {
             System.out.println("""
                     
-                    Type?
+                    ╔═════════════════════════════╗
+                    ║            Type?            ║
+                    ╚═════════════════════════════╝
                     
                     1) Health
                     2) Strength
@@ -195,7 +199,9 @@ public class UserInterface {
         while (isAddingToppings) {
             System.out.println("""
                     
-                    Toppings?
+                    ╔═════════════════════════════╗
+                    ║          Toppings?          ║
+                    ╚═════════════════════════════╝
                     
                             Name                    Price       Gained Ability
                     
@@ -377,9 +383,9 @@ public class UserInterface {
         while (size == null) {
             System.out.println("""
                     
-                    ╔══════════════════════════════╗
-                    ║          Add A Side          ║
-                    ╚══════════════════════════════╝
+                    ╔═════════════════════════════╗
+                    ║         Pick a size         ║
+                    ╚═════════════════════════════╝
                     
                     1) Large:   6 Gold
                     2) Medium:  4 Gold

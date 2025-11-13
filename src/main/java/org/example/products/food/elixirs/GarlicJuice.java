@@ -5,7 +5,7 @@ import org.example.products.food.Elixir;
 public class GarlicJuice extends Elixir {
 
     private final String name = "Garlic Water";
-    private final String description = "It's water with garlic in it";
+    private final String description = "It's water with garlic in it (just for Fanuel)";
 
     public GarlicJuice(String size, double price) {
         super.setName(name);

@@ -1,5 +1,8 @@
 # <center>Oops! All Magic
 
+---
+<center>This program is designed to handle custome orders of magical potions, elixirs, and various fantastical sides
+---
 
 ## <center>Code Flow Concept
 <div style="text-align:center;">

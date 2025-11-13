@@ -16,7 +16,7 @@ import java.util.ArrayList;
 
 public class FileManagement {
 
-    private static String fileWriteLocation = "src/main/resources/";
+    private static String fileWriteLocation = "src/main/resources/receipts/";
 
     public static void saveReceipt(Order order) throws IOException {
 

@@ -25,6 +25,8 @@ public class FileManagement {
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyyMMdd-hhmmss");
         String fileSignature = fileDateName.format(dateTimeFormatter);
 
+        // Directory to check if it exists
+        File fileDirectory = new File(String.valueOf(fileWriteLocation));
         // Create new file with custom DateTime tag
         File file = new File(fileWriteLocation + fileSignature + ".json");
 
@@ -67,8 +69,10 @@ public class FileManagement {
         root.set("menu-items", menuItemsArray);
 
         //write object to file
+        if(!fileDirectory.exists()) {
+            fileDirectory.mkdir();
+        }
         objectMapper.writerWithDefaultPrettyPrinter().writeValue(file, root);
-
 
         // Display receipt in console
         AsciiTable at = new AsciiTable();

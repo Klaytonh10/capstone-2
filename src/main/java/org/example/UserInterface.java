@@ -229,6 +229,7 @@ public class UserInterface {
                 case "3":
                     potion.addTopping(new EtherealHoney());
                     System.out.println("Ethereal Honey Added");
+                    break;
                 case "4":
                     if (hasSeed) {
                         potion.addTopping(new PremiumCelestialSeed(true));

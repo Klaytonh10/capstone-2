@@ -2,7 +2,14 @@
 
 
 ## <center>Code Flow Concept
-![Flow Chart](images/potionShopFlow.PNG)
+<div style="text-align:center;">
+<img src="images/potionShopFlow.PNG" width="1200" alt="Flow Chart"/>
+</div>
+
+| Interface        | Purpose                                                         |
+|------------------|-----------------------------------------------------------------|
+| <center> Product | <center> Covers all classes that have a name and price variable |
+
 
 
 | Abstract Classes  | Purpose                                                                                                                     |
@@ -11,6 +18,8 @@
 | <center> Elixir   | <center> Extends MenuItem class and acts as a parent for SundropSpritz, ThunderMead, and GarlicJuice                        |
 | <center> Side     | <center> Extends MenuItem class and acts as a parent for DragonScaleChips, PhoenixFeatherFries, and ToadstoolBites          |
 | <center> Topping  | <center> Implements Product interface and acts as a parent to any product classes that should not be orderable individually |
+
+
 
 | Classes                 | Purpose                                                                                                                                                                                                                 |
 |-------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|

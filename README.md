@@ -6,9 +6,9 @@
 <img src="images/potionShopFlow.PNG" width="1200" alt="Flow Chart"/>
 </div>
 
-| Interface        | Purpose                                                         |
-|------------------|-----------------------------------------------------------------|
-| <center> Product | <center> Covers all classes that have a name and price variable |
+| Interface        | Purpose                                                                                                                       |
+|------------------|-------------------------------------------------------------------------------------------------------------------------------|
+| <center> Product | <center> Covers all classes that have a "name" and "price" variable so that these are required for any further implementation |
 
 
 

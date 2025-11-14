@@ -1,7 +1,8 @@
 # <center>Oops! All Magic
 
 ---
-<center>This program is designed to handle custome orders of magical potions, elixirs, and various fantastical sides
+### <center> This program is designed to handle custome orders of magical potions, elixirs, and various fantastical sides
+
 ---
 
 ## <center>Code Flow Concept
@@ -39,7 +40,9 @@
 </div>
 
 ### <center>Using the Jackson library, I iterate through my MenuItems within the given Order object and create a new JSON object with all of the information nested dynamically
+
 ---
+
 <div style="text-align:center;">
 <img src="images/AsciiTableBlock.PNG" width="600" alt="Ascii Table Implementation"/>
 </div>
